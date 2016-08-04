@@ -1,0 +1,608 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="linux命令," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="概述 本片博客记录了常用的linux命令。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linus命令">
+<meta property="og:url" content="http://yoursite.com/2016/08/03/Linus命令/index.html">
+<meta property="og:site_name" content="JiaoMingLiang‘s Blog">
+<meta property="og:description" content="概述 本片博客记录了常用的linux命令。">
+<meta property="og:updated_time" content="2016-08-04T08:33:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Linus命令">
+<meta name="twitter:description" content="概述 本片博客记录了常用的linux命令。">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: 'Author'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/08/03/Linus命令/"/>
+
+  <title> Linus命令 | JiaoMingLiang‘s Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="china">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">JiaoMingLiang‘s Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">兰生幽谷，不以无人而不芳。</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Linus命令
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2016-08-03T23:23:41+08:00" content="2016-08-03">
+              2016-08-03
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p> 本片博客记录了常用的linux命令。</p>
+<a id="more"></a>
+<h2 id="cd"><a href="#cd" class="headerlink" title="cd"></a>cd</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$  <span class="built_in">cd</span> [dirName]</div></pre></td></tr></table></figure>
+<p>示例：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> /etc/usr/<span class="built_in">local</span>/</div><div class="line"><span class="built_in">cd</span>            <span class="comment">#返回主目录</span></div><div class="line"><span class="built_in">cd</span> ~          <span class="comment">#返回主目录</span></div><div class="line"><span class="built_in">cd</span> ..         <span class="comment">#返回上一级目录</span></div><div class="line"><span class="built_in">cd</span> /..        <span class="comment">#返回根目录</span></div><div class="line"><span class="built_in">cd</span> -          <span class="comment">#回到上次所在目录</span></div></pre></td></tr></table></figure></p>
+<h2 id="ls"><a href="#ls" class="headerlink" title="ls"></a>ls</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ls [-alrtAFR] [name...]</div></pre></td></tr></table></figure>
+<p>示例<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ls -al</div></pre></td></tr></table></figure></p>
+<p>参数 :<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="_">-a</span> 显示所有文件及目录 (ls内定将文件名或目录名称开头为<span class="string">"."</span>的视为隐藏档，不会列出)</div><div class="line"><span class="_">-l</span> 除文件名称外，亦将文件型态、权限、拥有者、文件大小等资讯详细列出</div><div class="line">-r 将文件以相反次序显示(原定依英文字母次序)</div><div class="line">-t 将文件依建立时间之先后次序列出</div><div class="line">-A 同 <span class="_">-a</span> ，但不列出 <span class="string">"."</span> (目前目录) 及 <span class="string">".."</span> (父目录)</div><div class="line">-F 在列出的文件名称后加一符号；例如可执行档则加 <span class="string">"*"</span>, 目录则加 <span class="string">"/"</span></div><div class="line"></div><div class="line">-R 若目录下有文件，则以下之文件亦皆依序列出</div><div class="line">此命令在linux中 ll 两个小写的L，是ls -al的简化    “ l. ”可以列出隐藏文件，linux系统中隐藏文件都是以 “.”开头的</div></pre></td></tr></table></figure></p>
+<h2 id="mv"><a href="#mv" class="headerlink" title="mv"></a>mv</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mv [options] <span class="built_in">source</span> dest</div><div class="line">mv [options] source... directory</div></pre></td></tr></table></figure>
+<p>实例：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">mv root.war /usr/<span class="built_in">local</span>/</div><div class="line">mv blog.war root.war  <span class="comment"># 将blog.war重命名为root.war</span></div><div class="line">mv info/ logs         <span class="comment">#若logs存在，则将indo移动到logs下，若不存在则吧info改名为logs</span></div><div class="line">mv /class/student/* . <span class="comment">#把student下的所有文件移动到当前目录 “.”表示当前目录</span></div></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">-i: 若指定目录已有同名文件，则先询问是否覆盖旧文件;</div><div class="line"><span class="_">-f</span>: 在mv操作要覆盖某已有的目标文件时不给任何指示;</div><div class="line"> mv的其他功能：</div><div class="line">命令格式</div><div class="line">运行结果</div><div class="line">mv 文件名 文件名（这个功能挺常用的）	将源文件名改为目标文件名</div><div class="line">mv 文件名 目录名	将文件移动到目标目录</div><div class="line">mv 目录名 目录名	目标目录已存在，将源目录</div><div class="line">移动到目标目录；目标</div><div class="line">目录不存在则改名</div></pre></td></tr></table></figure>
+<h2 id="rm"><a href="#rm" class="headerlink" title="rm"></a>rm</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">rm [options] name...</div><div class="line">rm a.txt    <span class="comment">#删除文件</span></div><div class="line">rm -r dir   <span class="comment">#删除文件夹</span></div><div class="line">rm -r *     <span class="comment">#删除当前目录下的所有文件和目录</span></div></pre></td></tr></table></figure>
+<p>参数：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">-i 删除前逐一询问确认。</div><div class="line"><span class="_">-f</span> 即使原档案属性设为唯读，亦直接删除，无需逐一确认。</div><div class="line">-r 将目录及以下之档案亦逐一删除。</div></pre></td></tr></table></figure></p>
+<h2 id="mdir"><a href="#mdir" class="headerlink" title="mdir"></a>mdir</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mdir [-afwx/][目录]</div></pre></td></tr></table></figure>
+<p> 参数：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">-/ 显示目录下所有子目录与文件。</div><div class="line"><span class="_">-a</span> 　显示隐藏文件。</div><div class="line"><span class="_">-f</span> 　不显示磁盘所剩余的可用空间。</div><div class="line">-w 　仅显示目录或文件名称，并以横排方式呈现，以便一次能显示较多的目录或文件。</div><div class="line">-X 　仅显示目录下所有子目录与文件的完整路径，不显示其他信息.</div></pre></td></tr></table></figure></p>
+<h2 id="cat"><a href="#cat" class="headerlink" title="cat"></a>cat</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cat [-AbeEnstTuv] [--help] [--version] fileName</div></pre></td></tr></table></figure>
+<p>实例：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">cat -n a.txt</div><div class="line">参数说明：</div><div class="line">　　-n 或 --number 由 1 开始对所有输出的行数编号</div><div class="line">　　-b 或 --number-nonblank 和 -n 相似，只不过对于空白行不编号</div><div class="line">　　<span class="_">-s</span> 或 --squeeze-blank 当遇到有连续两行以上的空白行，就代换为一行的空白行</div><div class="line">　　-v 或 --show-nonprinting</div></pre></td></tr></table></figure></p>
+<h2 id="cp"><a href="#cp" class="headerlink" title="cp"></a>cp</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cp [options] <span class="built_in">source</span> dest</div></pre></td></tr></table></figure>
+<p>实例：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cp blog.war /user/<span class="built_in">local</span></div></pre></td></tr></table></figure></p>
+<p>参数说明：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="_">-a</span>：此选项通常在复制目录时使用，它保留链接、文件属性，并复制目录下的所有内容。其作用等于dpR参数组合。</div><div class="line"><span class="_">-d</span>：复制时保留链接。这里所说的链接相当于Windows系统中的快捷方式。</div><div class="line"><span class="_">-f</span>：覆盖已经存在的目标文件而不给出提示。</div><div class="line">-i：与<span class="_">-f</span>选项相反，在覆盖目标文件之前给出提示，要求用户确认是否覆盖，回答<span class="string">"y"</span>时目标文件将被覆盖。</div><div class="line">-p：除复制文件的内容外，还把修改时间和访问权限也复制到新文件中。</div><div class="line">-r：若给出的源文件是一个目录文件，此时将复制该目录下所有的子目录和文件。</div><div class="line"><span class="_">-l</span>：不复制文件，只是生成链接文件。</div></pre></td></tr></table></figure></p>
+<h2 id="scp"><a href="#scp" class="headerlink" title="scp"></a>scp</h2><p>此命令主要用于向远程主机拷贝，比如：云服务器<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scp [可选参数] file_<span class="built_in">source</span> file_target</div></pre></td></tr></table></figure></p>
+<p>实例：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scp blog.war root@168.23.3.1:~ <span class="comment">#将blog.war拷贝到目的主机的主目录</span></div></pre></td></tr></table></figure></p>
+<p>参数说明：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">-1： 强制scp命令使用协议ssh1</div><div class="line">-2： 强制scp命令使用协议ssh2</div><div class="line">-4： 强制scp命令只使用IPv4寻址</div><div class="line">-6： 强制scp命令只使用IPv6寻址</div><div class="line">-B： 使用批处理模式（传输过程中不询问传输口令或短语）</div><div class="line">-C： 允许压缩。（将-C标志传递给ssh，从而打开压缩功能）</div><div class="line">-p：保留原文件的修改时间，访问时间和访问权限。</div><div class="line">-q： 不显示传输进度条。</div><div class="line">-r： 递归复制整个目录。</div><div class="line">-v：详细方式显示输出。scp和ssh(1)会显示出整个过程的调试信息。这些信息用于调试连接，验证和配置问题。</div><div class="line">-c cipher： 以cipher将数据传输进行加密，这个选项将直接传递给ssh。</div><div class="line">-F ssh_config： 指定一个替代的ssh配置文件，此参数直接传递给ssh。</div><div class="line">-i identity_file： 从指定文件中读取传输时使用的密钥文件，此参数直接传递给ssh。</div><div class="line"><span class="_">-l</span> <span class="built_in">limit</span>： 限定用户所能使用的带宽，以Kbit/s为单位。</div><div class="line">-o ssh_option： 如果习惯于使用ssh_config(5)中的参数传递方式，</div><div class="line">-P port：注意是大写的P, port是指定数据传输用到的端口号</div><div class="line">-S program： 指定加密传输时所使用的程序。此程序必须能够理解ssh(1)的选项。</div></pre></td></tr></table></figure></p>
+<h2 id="pwd"><a href="#pwd" class="headerlink" title="pwd"></a>pwd</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">pwd</span> [--help][--version] <span class="comment">#显示当前位置的目录</span></div></pre></td></tr></table></figure>
+<p>参数说明:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">--help 在线帮助。</div><div class="line">--version 显示版本信息。</div></pre></td></tr></table></figure></p>
+<h2 id="tar"><a href="#tar" class="headerlink" title="tar"></a>tar</h2><p>压缩文件的压缩和解压（语法比较全但是比较繁琐）<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tar [-ABcdgGhiklmMoOpPrRsStuUvwWxzZ][-b &lt;区块数目&gt;][-C &lt;目的目录&gt;][<span class="_">-f</span> &lt;备份文件&gt;][-F &lt;Script文件&gt;][-K &lt;文件&gt;][-L &lt;媒体容量&gt;][-N &lt;日期时间&gt;][-T &lt;范本文件&gt;][-V &lt;卷册名称&gt;][-X &lt;范本文件&gt;][-&lt;设备编号&gt;&lt;存储密度&gt;][--after-date=&lt;日期时间&gt;][--atime-preserve][--backuup=&lt;备份方式&gt;][--checkpoint][--concatenate][--confirmation][--delete][--exclude=&lt;范本样式&gt;][--force-local][--group=&lt;群组名称&gt;][--help][--ignore-failed-read][--new-volume-script=&lt;Script文件&gt;][--newer-mtime][--no-recursion][--null][--numeric-owner][--owner=&lt;用户名称&gt;][--posix][--erve][--preserve-order][--preserve-permissions][--record-size=&lt;区块数目&gt;][--recursive-unlink][--remove-files][--rsh-command=&lt;执行指令&gt;][--same-owner][--suffix=&lt;备份字尾字符串&gt;][--totals][--use-compress-program=&lt;执行指令&gt;][--version][--volno-file=&lt;编号文件&gt;][文件或目录...]</div></pre></td></tr></table></figure></p>
+<p>简化为：语法：tar [主选项+辅选项] 文件或者目录实例：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">tar -czvf test.tar.gz a.c //压缩 a.c文件为test.tar.gz a.c <span class="comment">#压缩文件 非打包</span></div><div class="line">tar -tzvf test.tar.gz -rw-r--r-- root/root 0 2010-05-24 16:51:59 a.c <span class="comment">#列出压缩文件内容</span></div><div class="line">tar -xzvf test.tar.gz a.c <span class="comment">#解压文件</span></div></pre></td></tr></table></figure></p>
+<p>主选项：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">c 创建新的档案文件。如果用户想备份一个目录或是一些文件，就要选择这个选项。相当于打包。</div><div class="line">x 从档案文件中释放文件。相当于拆包。</div><div class="line">t 列出档案文件的内容，查看已经备份了哪些文件。</div><div class="line">特别注意，在参数的下达中， c/x/t 仅能存在一个！不可同时存在！因为不可能同时压缩与解压缩。</div></pre></td></tr></table></figure></p>
+<p>辅助选项：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"> -z ：是否同时具有 gzip 的属性？亦即是否需要用 gzip 压缩或解压？ 一般格式为xx.tar.gz或xx. tgz</div><div class="line">-j ：是否同时具有 bzip2 的属性？亦即是否需要用 bzip2 压缩或解压？一般格式为xx.tar.bz2  </div><div class="line">-v ：压缩的过程中显示文件！这个常用</div><div class="line"><span class="_">-f</span> ：使用档名，请留意，在 f 之后要立即接档名喔！不要再加其他参数！</div><div class="line">-p ：使用原文件的原来属性（属性不会依据使用者而变）</div><div class="line">--exclude FILE：在压缩的过程中，不要将 FILE 打包！</div></pre></td></tr></table></figure></p>
+<h2 id="ps"><a href="#ps" class="headerlink" title="ps"></a>ps</h2><p>显示进程信息<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ps [options] [–<span class="built_in">help</span>]实例：<span class="comment"># ps -A //显示进程信息# ps -u root //显示root进程用户信息# ps -ef //显示所有命令，连带命令行#ps -ef | grep "jetty" //可以查找相关进程的信息</span></div></pre></td></tr></table></figure></p>
+<p>参数：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">ps 的参数非常多, 在此仅列出几个常用的参数并大略介绍含义</div><div class="line">-A 列出所有的行程</div><div class="line">-w 显示加宽可以显示较多的资讯</div><div class="line">-au 显示较详细的资讯</div><div class="line">-aux 显示所有包含其他使用者的行程</div><div class="line">au(x) 输出格式 :</div><div class="line">USER PID %CPU %MEM VSZ RSS TTY STAT START TIME COMMAND</div><div class="line">USER: 行程拥有者</div><div class="line">PID: pid</div><div class="line">%CPU: 占用的 CPU 使用率</div><div class="line">%MEM: 占用的记忆体使用率</div><div class="line">VSZ: 占用的虚拟记忆体大小</div><div class="line">RSS: 占用的记忆体大小</div><div class="line">TTY: 终端的次要装置号码 (minor device number of tty)</div><div class="line">STAT: 该行程的状态:</div><div class="line">D: 不可中断的静止 (通悸□□缜b进行 I/O 动作)</div><div class="line">R: 正在执行中</div><div class="line">S: 静止状态</div><div class="line">T: 暂停执行</div><div class="line">Z: 不存在但暂时无法消除</div><div class="line">W: 没有足够的记忆体分页可分配</div><div class="line">&lt;: 高优先序的行程</div><div class="line">N: 低优先序的行程</div><div class="line">L: 有记忆体分页分配并锁在记忆体内 (实时系统或捱A I/O)</div><div class="line">START: 行程开始时间</div><div class="line">TIME: 执行的时间</div><div class="line">COMMAND:所执行的指令</div></pre></td></tr></table></figure></p>
+<h2 id="kill"><a href="#kill" class="headerlink" title="kill"></a>kill</h2><p>可以用ps找到某个进程然后用kill 结束掉<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">kill</span> [<span class="_">-s</span> &lt;信息名称或编号&gt;][程序]　或　<span class="built_in">kill</span> [<span class="_">-l</span> &lt;信息编号&gt;]实例：<span class="built_in">kill</span> -9 1909 //强制结束1909PID   1909 不是端口号</div></pre></td></tr></table></figure></p>
+<p>参数说明：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="_">-l</span> &lt;信息编号&gt; 　若不加&lt;信息编号&gt;选项，则<span class="_">-l</span>参数会列出全部的信息名称。</div><div class="line"><span class="_">-s</span> &lt;信息名称或编号&gt; 　指定要送出的信息。</div><div class="line">[程序] 　[程序]可以是程序的PID或是PGID，也可以是工作编号。</div></pre></td></tr></table></figure></p>
+<p>只有第9种信号(SIGKILL)才可以无条件终止进程，其他信号进程都有权利忽略。 下面是常用的信号：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">HUP    1    终端断线</div><div class="line">INT     2    中断（同 Ctrl + C）</div><div class="line">QUIT    3    退出（同 Ctrl + \）</div><div class="line">TERM   15    终止</div><div class="line">KILL    9    强制终止</div><div class="line">CONT   18    继续（与STOP相反， <span class="built_in">fg</span>/<span class="built_in">bg</span>命令）</div><div class="line">STOP    19    暂停（同 Ctrl + Z）</div></pre></td></tr></table></figure></p>
+<h2 id="查看端口"><a href="#查看端口" class="headerlink" title="查看端口"></a>查看端口</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">netstat -nat | grep 8080 </div><div class="line">lsof -i:3009//查看端口占用</div></pre></td></tr></table></figure>
+<h2 id="终端登陆mysql数据库"><a href="#终端登陆mysql数据库" class="headerlink" title="终端登陆mysql数据库"></a>终端登陆mysql数据库</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysql -A -U -uroot -p<span class="string">'123'</span> -hlocalhost -P3306 database</div></pre></td></tr></table></figure>
+<h2 id="linux文件权限"><a href="#linux文件权限" class="headerlink" title="linux文件权限"></a>linux文件权限</h2><p>参考：<a href="http://blog.chinaunix.net/uid-27057748-id-3924243.html" target="_blank" rel="external">Linux文件权限</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">drwxrwxr-x+ 53 root admin 1802 7 12 23:06 Applications</div><div class="line">drwxr-xr-x+ 59 root wheel 2006 7 12 11:31 Library</div><div class="line">drwxr-xr-x@ 2 root wheel 68 2 26 06:50 Network</div></pre></td></tr></table></figure></p>
+<p>linux文件权限，第一个字符表示文件类型：</p>
+<ul>
+<li>当为[ d ]则是目录</li>
+<li>为[ - ]则是文件</li>
+<li>若是[ l ]则表示为连结档(link file)</li>
+<li>若是[ b ]则表示为装置文件里面的可供储存的接口设备</li>
+<li>若是[ c ]则表示为装置文件里面的串行端口设备，例如键盘、鼠标</li>
+<li>接下来的属性中，三个为一组，且均为『rwx』的三个参数的组合。其中，[ r ]代表可读、</li>
+</ul>
+<p>[ w ]代表可写、[ x ]代表可执行：</p>
+<ul>
+<li>第一组为『拥有人的权限』，以第五行为例，该文件的拥有人可以读写，但不可执行；</li>
+<li>第二组为『同群组的权限』；</li>
+<li>第三组为『其它非本群组的权限』。<br>权限修改时，使用数字修改： rwx 一个组 ：每一个位置都可以看成一个二进制位：<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">r w x</div><div class="line">1 1 1   <span class="comment">#这个权限组的数字就是 7</span></div><div class="line">r _ x</div><div class="line">1 0 1 <span class="comment">#这个权限组的数字表示就是 5，使用chmod命令时 就可以通过数字改变权限</span></div><div class="line">＃使用chmod命令可以改变文件权限</div><div class="line">chmod 777 <span class="built_in">test</span>/</div><div class="line">＃如果递归修改 <span class="built_in">test</span>子文件夹及文件  可以使用 －R 参数</div><div class="line">          这就是我在项目部署中用到的命令，以后用到其他的还会继续整理。</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="mkdir"><a href="#mkdir" class="headerlink" title="mkdir"></a>mkdir</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#递归创建子文件</span></div><div class="line">mkdir -p /data/<span class="built_in">log</span></div></pre></td></tr></table></figure>
+<p>以后在学到相关命令会继续更新。。。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/linux命令/" rel="tag">#linux命令</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/08/02/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://ww2.sinaimg.cn/large/006tKfTcjw1f6hnikr7zhj30w60watis.jpg"
+               alt="焦明亮" />
+          <p class="site-author-name" itemprop="name">焦明亮</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">2</span>
+              <span class="site-state-item-name">Artikel</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">Tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cd"><span class="nav-number">2.</span> <span class="nav-text">cd</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ls"><span class="nav-number">3.</span> <span class="nav-text">ls</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mv"><span class="nav-number">4.</span> <span class="nav-text">mv</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#rm"><span class="nav-number">5.</span> <span class="nav-text">rm</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mdir"><span class="nav-number">6.</span> <span class="nav-text">mdir</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cat"><span class="nav-number">7.</span> <span class="nav-text">cat</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cp"><span class="nav-number">8.</span> <span class="nav-text">cp</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#scp"><span class="nav-number">9.</span> <span class="nav-text">scp</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pwd"><span class="nav-number">10.</span> <span class="nav-text">pwd</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tar"><span class="nav-number">11.</span> <span class="nav-text">tar</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ps"><span class="nav-number">12.</span> <span class="nav-text">ps</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#kill"><span class="nav-number">13.</span> <span class="nav-text">kill</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看端口"><span class="nav-number">14.</span> <span class="nav-text">查看端口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#终端登陆mysql数据库"><span class="nav-number">15.</span> <span class="nav-text">终端登陆mysql数据库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#linux文件权限"><span class="nav-number">16.</span> <span class="nav-text">linux文件权限</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mkdir"><span class="nav-number">17.</span> <span class="nav-text">mkdir</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">焦明亮</span>
+</div>
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

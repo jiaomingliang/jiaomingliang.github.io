@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Git," />
 
 
 
@@ -84,12 +84,27 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="JiaoMingLiang‘s Blog">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="初识Git&amp;emsp;&amp;emsp;在早期开发项目中，对于项目的管理与协作时非常困难的事情，因此版本控制系统应运而生，git和Mercurial,Bazaar 还有 Darcs 一样都是分布式的版本控制系统。客户端每次对远程仓库中提取的并不是新版本的文件快照，而是把原始的代码仓库完整的镜像下来。这么一来，任何一处协同工作用的服务器发生故障，事后都可以用任何一个镜像出来的本地仓库恢复。&amp;emsp;&amp;e">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Git命令">
+<meta property="og:url" content="http://yoursite.com/2016/08/05/解读Git/index.html">
 <meta property="og:site_name" content="JiaoMingLiang‘s Blog">
+<meta property="og:description" content="初识Git&amp;emsp;&amp;emsp;在早期开发项目中，对于项目的管理与协作时非常困难的事情，因此版本控制系统应运而生，git和Mercurial,Bazaar 还有 Darcs 一样都是分布式的版本控制系统。客户端每次对远程仓库中提取的并不是新版本的文件快照，而是把原始的代码仓库完整的镜像下来。这么一来，任何一处协同工作用的服务器发生故障，事后都可以用任何一个镜像出来的本地仓库恢复。&amp;emsp;&amp;e">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006tKfTcjw1f6ioprd1tij30pm0bidhm.jpg">
+<meta property="og:image" content="http://ww2.sinaimg.cn/large/006tKfTcjw1f6ipbkxgksj30u20cu3yx.jpg">
+<meta property="og:image" content="http://ww4.sinaimg.cn/large/006tKfTcjw1f6ipdjtwjkj30qk06kjrm.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/006tKfTcjw1f6ipe3r9prj30t60ak3yw.jpg">
+<meta property="og:image" content="http://ww4.sinaimg.cn/large/006tKfTcjw1f6ipgtzoikj30lm07c74h.jpg">
+<meta property="og:image" content="http://ww2.sinaimg.cn/large/006tKfTcjw1f6iph25cu4j30ic09edg0.jpg">
+<meta property="og:image" content="http://ww2.sinaimg.cn/large/006tKfTcjw1f6ipkb2ibfj30no0bwaaf.jpg">
+<meta property="og:image" content="http://ww4.sinaimg.cn/large/006tKfTcjw1f6ipkv2jbpj311i0mqdi4.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/006tKfTcjw1f6ipl0dnr8j30wo0ekdgz.jpg">
+<meta property="og:image" content="http://ww2.sinaimg.cn/large/006tKfTcjw1f6ipofhbpuj30u30kln41.jpg">
+<meta property="og:updated_time" content="2016-08-05T03:31:55.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JiaoMingLiang‘s Blog">
+<meta name="twitter:title" content="Git命令">
+<meta name="twitter:description" content="初识Git&amp;emsp;&amp;emsp;在早期开发项目中，对于项目的管理与协作时非常困难的事情，因此版本控制系统应运而生，git和Mercurial,Bazaar 还有 Darcs 一样都是分布式的版本控制系统。客户端每次对远程仓库中提取的并不是新版本的文件快照，而是把原始的代码仓库完整的镜像下来。这么一来，任何一处协同工作用的服务器发生故障，事后都可以用任何一个镜像出来的本地仓库恢复。&amp;emsp;&amp;e">
+<meta name="twitter:image" content="http://ww1.sinaimg.cn/large/006tKfTcjw1f6ioprd1tij30pm0bidhm.jpg">
 
 
 
@@ -110,9 +125,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/08/05/解读Git/"/>
 
-  <title> JiaoMingLiang‘s Blog </title>
+  <title> Git命令 | JiaoMingLiang‘s Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="china">
@@ -133,9 +148,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -212,9 +225,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
   
@@ -234,10 +247,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2016/08/05/解读Git/" itemprop="url">
-                  Git命令
-                </a>
+                Git命令
               
             
           </h1>
@@ -277,9 +287,7 @@
       
 
       
-        
-          
-            <h2 id="初识Git"><a href="#初识Git" class="headerlink" title="初识Git"></a>初识Git</h2><p>&emsp;&emsp;在早期开发项目中，对于项目的管理与协作时非常困难的事情，因此版本控制系统应运而生，git和Mercurial,Bazaar 还有 Darcs 一样都是分布式的版本控制系统。客户端每次对远程仓库中提取的并不是新版本的文件快照，而是把原始的代码仓库完整的镜像下来。这么一来，任何一处协同工作用的服务器发生故障，事后都可以用任何一个镜像出来的本地仓库恢复。<br>&emsp;&emsp;git对差异文件的处理上，并不care文件数据具体差异的地方，而是把变化的文件作快照后，记录在一个微型的文件系统中。每次提交更新时，他会纵览所有文件的指纹信息并对文件做一个快照，然后保存一个指向这次快照的索引，为了提高性能，对于没有变化的文件，git不会再次保存，而只是对上一次保存的快照做一次连接。<br>工作方式如图：<img src="http://ww1.sinaimg.cn/large/006tKfTcjw1f6ioprd1tij30pm0bidhm.jpg" alt=""></p>
+        <h2 id="初识Git"><a href="#初识Git" class="headerlink" title="初识Git"></a>初识Git</h2><p>&emsp;&emsp;在早期开发项目中，对于项目的管理与协作时非常困难的事情，因此版本控制系统应运而生，git和Mercurial,Bazaar 还有 Darcs 一样都是分布式的版本控制系统。客户端每次对远程仓库中提取的并不是新版本的文件快照，而是把原始的代码仓库完整的镜像下来。这么一来，任何一处协同工作用的服务器发生故障，事后都可以用任何一个镜像出来的本地仓库恢复。<br>&emsp;&emsp;git对差异文件的处理上，并不care文件数据具体差异的地方，而是把变化的文件作快照后，记录在一个微型的文件系统中。每次提交更新时，他会纵览所有文件的指纹信息并对文件做一个快照，然后保存一个指向这次快照的索引，为了提高性能，对于没有变化的文件，git不会再次保存，而只是对上一次保存的快照做一次连接。<br>工作方式如图：<img src="http://ww1.sinaimg.cn/large/006tKfTcjw1f6ioprd1tij30pm0bidhm.jpg" alt=""></p>
 <p>&emsp;&emsp;对于任何一个文件，在git中都有三种状态：已提交，已修改和以暂存。对于这三种状态的查询和如何到达这三种状态，后面会讲。</p>
 <h2 id="git基础"><a href="#git基础" class="headerlink" title="git基础"></a>git基础</h2><h4 id="本地仓库的初始化与提交过程"><a href="#本地仓库的初始化与提交过程" class="headerlink" title="本地仓库的初始化与提交过程"></a>本地仓库的初始化与提交过程</h4><p>&emsp;&amp;emsp先从最基础的地方说起，先使用git，首先要做的就是建立本地仓库，在一个文件夹下执行：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">git init</div><div class="line"> ``` </div><div class="line">之后会看到目录中生成了,git目录，git使用的所有资源和数据都保存在这个目录中，这就表示已经初始化为一个git本地仓库。然后使用：</div><div class="line">```bash</div><div class="line">git add --all</div><div class="line">git add add README</div><div class="line">git add *.c</div><div class="line">```  </div><div class="line">&amp;emsp;&amp;emsp;就可以把你想要跟新的文件添加到暂存区，并且跟踪这部分文件，这也是的两个功能。</div><div class="line">```bash</div><div class="line">git add</div></pre></td></tr></table></figure></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git rm --cached filename //取消跟踪filename文件</div><div class="line">$ git reset HEAD filename //取消暂存区的文件</div></pre></td></tr></table></figure>
@@ -315,234 +323,59 @@
 <p><strong>如果回退之后 又想回到未来  除非你有未来的版本号  git log是打不出未来版本号的</strong></p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>&emsp;&emsp;最后用一幅图来将形象化：<br><img src="http://ww2.sinaimg.cn/large/006tKfTcjw1f6ipofhbpuj30u30kln41.jpg" alt=""></p>
 
-          
+      
+    </div>
+
+    <div>
+      
         
+
       
     </div>
 
     <div>
       
-    </div>
+        
 
-    <div>
       
     </div>
 
     <footer class="post-footer">
       
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/08/03/Linus命令/" itemprop="url">
-                  Linus命令
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-08-03T23:23:41+08:00" content="2016-08-03">
-              2016-08-03
-            </time>
-          </span>
-
+        <div class="post-tags">
           
-
-          
-            
-          
-
-          
-
-          
-          
-
+            <a href="/tags/Git/" rel="tag">#Git</a>
           
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p> 本片博客记录了常用的linux命令。</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/08/03/Linus命令/#more" rel="contents">
-              Weiterlesen &raquo;
-            </a>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/08/03/Linus命令/" rel="next" title="Linus命令">
+                <i class="fa fa-chevron-left"></i> Linus命令
+              </a>
+            
           </div>
-        
-      
-    </div>
 
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
+          <div class="post-nav-prev post-nav-item">
             
-            
-              
-                
-                <a class="post-title-link" href="/2016/08/02/hello-world/" itemprop="url">
-                  Hello World
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-08-02T10:26:19+08:00" content="2016-08-02">
-              2016-08-02
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
+          </div>
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -550,6 +383,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -569,8 +406,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://ww2.sinaimg.cn/large/006tKfTcjw1f6hnikr7zhj30w60watis.jpg"
@@ -613,6 +459,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#初识Git"><span class="nav-number">1.</span> <span class="nav-text">初识Git</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git基础"><span class="nav-number">2.</span> <span class="nav-text">git基础</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#本地仓库的初始化与提交过程"><span class="nav-number">2.0.1.</span> <span class="nav-text">本地仓库的初始化与提交过程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#移动文件"><span class="nav-number">2.0.2.</span> <span class="nav-text">移动文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#取消更改"><span class="nav-number">2.0.3.</span> <span class="nav-text">取消更改</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#远程仓库"><span class="nav-number">3.</span> <span class="nav-text">远程仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git分支"><span class="nav-number">4.</span> <span class="nav-text">git分支</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建分支"><span class="nav-number">4.0.1.</span> <span class="nav-text">创建分支</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#切换分支、删除本地分支与分支合并"><span class="nav-number">4.0.2.</span> <span class="nav-text">切换分支、删除本地分支与分支合并</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分支冲突"><span class="nav-number">4.0.3.</span> <span class="nav-text">分支冲突</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#显示提交记录"><span class="nav-number">4.0.4.</span> <span class="nav-text">显示提交记录</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#版本回退"><span class="nav-number">5.</span> <span class="nav-text">版本回退</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">6.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -709,6 +566,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 

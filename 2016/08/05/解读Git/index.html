@@ -100,7 +100,7 @@
 <meta property="og:image" content="http://ww4.sinaimg.cn/large/006tKfTcjw1f6ipkv2jbpj311i0mqdi4.jpg">
 <meta property="og:image" content="http://ww3.sinaimg.cn/large/006tKfTcjw1f6ipl0dnr8j30wo0ekdgz.jpg">
 <meta property="og:image" content="http://ww2.sinaimg.cn/large/006tKfTcjw1f6ipofhbpuj30u30kln41.jpg">
-<meta property="og:updated_time" content="2016-08-05T03:36:35.000Z">
+<meta property="og:updated_time" content="2016-08-16T11:56:02.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git命令">
 <meta name="twitter:description" content="本文讲述了git一些常用的命令原理。参考《pro git》">
@@ -296,6 +296,7 @@
 <p>最后提交的话就不会纳入此版本管理了。</p>
 <h3 id="移动文件"><a href="#移动文件" class="headerlink" title="移动文件"></a>移动文件</h3><p>这个功能与其说是移动不如说是改名：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">git mv file_from file_to</div><div class="line">git mv readme.txt readme <span class="comment">#等价于下面三条命令</span></div><div class="line">mv readme.txt readme <span class="comment">#移动数据</span></div><div class="line">git rm readme.txt <span class="comment">#删除原来的文件</span></div><div class="line">git add readme <span class="comment">#将改名后的文件移动到暂存区</span></div></pre></td></tr></table></figure></p>
 <h3 id="取消更改"><a href="#取消更改" class="headerlink" title="取消更改"></a>取消更改</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git reset HEAD BEN.rb //取消已经暂存的文件</div><div class="line">git checkout --ben.rb //取消已经更新但是未暂存的文件</div></pre></td></tr></table></figure>
+<p>###修改commit信息<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git commit --amend</div></pre></td></tr></table></figure></p>
 <h2 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a>远程仓库</h2><p>&emsp;&emsp;远程仓库是指托管 在网络上的项目仓库,可能会有好多个,其中有些你只能读,另外有些可以写。同他人协作 开发某个项目时,需要管理这些远程仓库,以便推送或拉取数据,分享各自的工作进展。管 理远程仓库的工作,包括添加远程库,移除废弃的远程库,管理各式远程库分支,定义是否 跟踪这些分支 。<br> 查看远程仓库<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git remote -v <span class="comment">#查看原称仓库的详细信息</span></div></pre></td></tr></table></figure></p>
 <p>了解了远程仓库后就要添加远程仓库了：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git remote add origin(shortname) git://github.com/paul/test.git</div></pre></td></tr></table></figure></p>
 <p>&emsp;&emsp;这条命令就添加了远程仓库，刚开始学习git的时候，在这里郁闷了很长时间，以为添加了远程仓库就能在服务器上面添加仓库，但是事实并不是这样，其实远程仓库并不是实际服务器上的仓库，而是服务器上的仓库的别名，可以看到 shortname 可以是任意的名字 可以代表后面的一大串url，这对我们以后向远程仓库push很方便，起码不用谢url了，git默认的仓库名字是origin。<br>从远程仓库抓取项目文件可以使用：<br> <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git fetch origin</div></pre></td></tr></table></figure></p>

@@ -1,0 +1,595 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="mysql," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="主要讲述mysql innodb的索引原理，存储形式、以及不同索引的区别。参考文献《mysql技术内幕》">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mysql索引原理.md">
+<meta property="og:url" content="http://yoursite.com/2016/08/28/mysql索引原理-md/index.html">
+<meta property="og:site_name" content="JiaoMingLiang‘s Blog">
+<meta property="og:description" content="主要讲述mysql innodb的索引原理，存储形式、以及不同索引的区别。参考文献《mysql技术内幕》">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/65e4f1e6jw1f79r2svd7dj21100aaabi.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/65e4f1e6jw1f79rckz38oj20jq09uaaq.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/65e4f1e6jw1f79s6r5orhj20d20dyaam.jpg">
+<meta property="og:image" content="http://ww2.sinaimg.cn/large/65e4f1e6jw1f79t65hqawj210m0vqgqv.jpg">
+<meta property="og:image" content="http://ww2.sinaimg.cn/large/65e4f1e6jw1f79tjgxpf2j20cu0csjrq.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/65e4f1e6jw1f79tkt32jpj211w0lsmz6.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/65e4f1e6jw1f79tlr7813j20o80820t4.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/65e4f1e6jw1f79tn4e8m0j20b00t0myh.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/65e4f1e6jw1f79tnf40w9j20ec0ke0tx.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/65e4f1e6jw1f79toichn4j20vu08idgy.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/65e4f1e6jw1f79tqmo0acj20uq08675f.jpg">
+<meta property="og:image" content="http://ww4.sinaimg.cn/large/65e4f1e6jw1f79trp5yyoj210g0qowik.jpg">
+<meta property="og:image" content="http://ww4.sinaimg.cn/large/65e4f1e6jw1f79twhd0dzj210q0qugqf.jpg">
+<meta property="og:updated_time" content="2016-08-28T14:33:17.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="mysql索引原理.md">
+<meta name="twitter:description" content="主要讲述mysql innodb的索引原理，存储形式、以及不同索引的区别。参考文献《mysql技术内幕》">
+<meta name="twitter:image" content="http://ww3.sinaimg.cn/large/65e4f1e6jw1f79r2svd7dj21100aaabi.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: 'Author'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/08/28/mysql索引原理-md/"/>
+
+  <title> mysql索引原理.md | JiaoMingLiang‘s Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="china">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">JiaoMingLiang‘s Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">兰生幽谷，不以无人而不芳。</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                mysql索引原理.md
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2016-08-28T19:54:21+08:00" content="2016-08-28">
+              2016-08-28
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>主要讲述mysql innodb的索引原理，存储形式、以及不同索引的区别。<br>参考文献《mysql技术内幕》<br><a id="more"></a></p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>&emsp;&emsp;InnoDB是Mysql的默认存储引擎（Mysql5.5之前是MyISAM），之前使用mysql时，对于要创建什么类型的索引一致很迷茫，所以这篇博客就将刚刚了解到的索引存储原理，沉淀一下。<br>&emsp;&emsp;</p>
+<h2 id="B-树索引"><a href="#B-树索引" class="headerlink" title="B+树索引"></a>B+树索引</h2><p>&emsp;&emsp;B+其本质就是B+树在数据库中的实现，但是B+树索引在数据库中有一个特点就是高扇出性，因此在数据库中，B+树的高度一般在2~3层，也就是对于查找某一键值的行记录，最多只需要2~3次IO，IO的读取和写入时很慢的，B+树高度过高Io的次数也就越多，性能越低。一般的磁盘每秒至少可以做100次IO，2~3次的IO意味着查询时间只需要0.02~0.03秒。<br>&emsp;&emsp;数据库中的B+树索引分为聚簇索引和辅助聚簇索引，不管是哪种索引都是B+树，不同的只是索引页和叶节点存储的内容。B+树适合作为数据库的基础结构，完全是因为计算机的内存-机械硬盘两层存储结构。内存可以完成快速的随机访问（随机访问即给出任意一个地址，要求返回这个地址存储的数据）但是容量较小。而硬盘的随机访问要经过机械动作（1磁头移动 2盘片转动），访问效率比内存低几个数量级，但是硬盘容量较大。典型的数据库容量大大超过可用内存大小，这就决定了在B+树中检索一条数据很可能要借助几次磁盘IO操作来完成。如下图所示：通常向下读取一个节点的动作可能会是一次磁盘IO操作，不过非叶节点通常会在初始阶段载入内存以加快访问速度。同时为提高在节点间横向遍历速度，真实数据库中可能会将图中蓝色的CPU计算/内存读取优化成二叉搜索树（InnoDB中的page directory机制），毕竟横向遍历O(n)很慢。<br>&emsp;&emsp;B+树索引的插入和删除操作会引起索引页和page页的分裂，这是就使索引页或者数据页的数据重新布整理布局，以保证B+树的平衡性。<br><img src="http://ww3.sinaimg.cn/large/65e4f1e6jw1f79r2svd7dj21100aaabi.jpg" alt=""><br>&emsp;&emsp;真实数据库中的B+树应该是非常扁平的，可以通过向表中顺序插入足够数据的方式来验证InnoDB中的B+树到底有多扁平。我们通过如下图的CREATE语句建立一个只有简单字段的测试表，然后不断添加数据来填充这个表。通过下图的统计数据（来源见参考文献1）可以分析出几个直观的结论，这几个结论宏观的展现了数据库里B+树的尺度。</p>
+<p>　　1 每个叶子节点存储了468行数据，每个非叶子节点存储了大约1200个键值，这是一棵平衡的1200路搜索树！</p>
+<p>　　2 对于一个22.1G容量的表，也只需要高度为3的B+树就能存储了，这个容量大概能满足很多应用的需要了。如果把高度增大到4，则B+树的存储容量立刻增大到25.9T之巨！</p>
+<p>　　3 对于一个22.1G容量的表，B+树的高度是3，如果要把非叶节点全部加载到内存也只需要少于18.8M的内存（如何得出的这个结论？因为对于高度为2的树，1203个叶子节点也只需要18.8M空间，而22.1G从良表的高度是3，非叶节点1204个。同时我们假设叶子节点的尺寸是大于非叶节点的，因为叶子节点存储了行数据而非叶节点只有键和少量数据。），只使用如此少的内存就可以保证只需要一次磁盘IO操作就检索出所需的数据，效率是非常之高的。<br><img src="http://ww3.sinaimg.cn/large/65e4f1e6jw1f79rckz38oj20jq09uaaq.jpg" alt=""></p>
+<h3 id="聚簇索引"><a href="#聚簇索引" class="headerlink" title="聚簇索引"></a>聚簇索引</h3><p>&emsp;&amp;emspInnoDB使用的是聚簇索引，将主键组织到一棵B+树中，而行数据就储存在叶子节点上，若使用”where id = 14”这样的条件查找主键，则按照B+树的检索算法即可查找到对应的叶节点，之后获得行数据。若对Name列进行条件搜索，则需要两个步骤：第一步在辅助索引B+树中检索Name，到达其叶子节点获取对应的主键。第二步使用主键在主索引B+树种再执行一次B+树检索操作，最终到达叶子节点即可获取整行数据。每个数据页（叶子节点）通过一个双向链表来进行连接，这样方便mysql的范围查找等操作。实际的数据表只能按照一颗B+树进行排序，因此每张表只能拥有一个聚簇索引，在很多情况下查询优化器很倾向采用聚簇索引，因为聚簇索引叶子节点直接就有所需要的数据行，不用再进行二次遍历以及读取IO。<br><img src="http://ww3.sinaimg.cn/large/65e4f1e6jw1f79s6r5orhj20d20dyaam.jpg" alt=""><br><strong>对于主键索引，最好是连续的（比如自增主键）这样方便索引的维护查询</strong></p>
+<h3 id="非聚簇索引"><a href="#非聚簇索引" class="headerlink" title="非聚簇索引"></a>非聚簇索引</h3><p>&emsp;&emsp;MyISM使用的是非聚簇索引，非聚簇索引的两棵B+树看上去没什么不同，节点的结构完全一致只是存储的内容不同而已，主键索引B+树的节点存储了主键，辅助键索引B+树存储了辅助键。表数据存储在独立的地方，这两颗B+树的叶子节点都使用一个地址指向真正的表数据，对于表数据来说，这两个键没有任何差别。由于索引树是独立的，通过辅助键检索无需访问主键的索引树。<br>&emsp;&emsp;每张表可以有多个非聚簇索引（辅助索引）索引，辅助索引的存在并不影响数据在聚簇索引中的组织。当通过聚簇索引来寻找数据时，innodb存储引擎会遍历辅助索引并通过也级别的指针获得指向主键索引的主键，然后在通过主键索引来找到一个完成的行记录，辅助索引的辅助键因为不唯一，所以会和主键一起组成一个辅助键以保证索引键的唯一性。MyISM中没有主键，所以辅助索引的叶子节点存储的是行所在的实际地址，这里你可能会疑问，既然叶子节点存储实际行的地址，那岂不是比Innodb的辅助索引要快？确实，在读比较多的情况下性能确实比较高，但是在OLTP情况下难免要进行数据的增加、删除、修改，这就可能不断更新叶子节点指向的数据页位置，这时的开销可能就会大于书签为主键方式的非聚簇索引了，使用主键维护成本低。<br>&emsp;&emsp;我们重点关注聚簇索引，看上去聚簇索引的效率明显要低于非聚簇索引，因为每次使用辅助索引检索都要经过两次B+树查找，这不是多此一举吗？聚簇索引的优势在哪？</p>
+<p>　　1 由于行数据和叶子节点存储在一起，这样主键和行数据是一起被载入内存的，找到叶子节点就可以立刻将行数据返回了，如果按照主键Id来组织数据，获得数据更快。</p>
+<p>　　2 辅助索引使用主键作为”指针” 而不是使用地址值作为指针的好处是，减少了当出现行移动或者数据页分裂时辅助索引的维护工作，使用主键值当作指针会让辅助索引占用更多的空间，换来的好处是InnoDB在移动行时无须更新辅助索引中的这个”指针”。也就是说行的位置（实现中通过16K的Page来定位，后面会涉及）会随着数据库里数据的修改而发生变化（前面的B+树节点分裂以及Page的分裂），使用聚簇索引就可以保证不管这个主键B+树的节点如何变化，辅助索引树都不受影响。<br><img src="http://ww2.sinaimg.cn/large/65e4f1e6jw1f79t65hqawj210m0vqgqv.jpg" alt=""></p>
+<h3 id="Page结构"><a href="#Page结构" class="headerlink" title="Page结构"></a>Page结构</h3><p>&emsp;&emsp;理解InnoDB的实现不得不提Page结构，Page是整个InnoDB存储的最基本构件，也是InnoDB磁盘管理的最小单位，与数据库相关的所有内容都存储在这种Page结构里。Page分为几种类型，常见的页类型有数据页（B-tree Node）Undo页（Undo Log Page）系统页（System Page） 事务数据页（Transaction System Page）等。单个Page的大小是16K（编译宏UNIV_PAGE_SIZE控制），每个Page使用一个32位的int值来唯一标识，这也正好对应InnoDB最大64TB的存储容量（16Kib * 2^32 = 64Tib）。一个Page的基本结构如下图所示：<br><img src="http://ww2.sinaimg.cn/large/65e4f1e6jw1f79tjgxpf2j20cu0csjrq.jpg" alt=""><br>&emsp;&emsp;每个Page都有通用的头和尾，但是中部的内容根据Page的类型不同而发生变化。Page的头部里有我们关心的一些数据，下图把Page的头部详细信息显示出来：<br><img src="http://ww3.sinaimg.cn/large/65e4f1e6jw1f79tkt32jpj211w0lsmz6.jpg" alt=""><br>&emsp;&emsp;我们重点关注和数据组织结构相关的字段：Page的头部保存了两个指针，分别指向前一个Page和后一个Page，头部还有Page的类型信息和用来唯一标识Page的编号。根据这两个指针我们很容易想象出Page链接起来就是一个双向链表的结构。<br><img src="http://ww3.sinaimg.cn/large/65e4f1e6jw1f79tlr7813j20o80820t4.jpg" alt=""><br>&emsp;&emsp;再看看Page的主体内容，我们主要关注行数据和索引的存储，他们都位于Page的User Records部分，User Records占据Page的大部分空间，User Records由一条一条的Record组成，每条记录代表索引树上的一个节点（非叶子节点和叶子节点）。在一个Page内部，单链表的头尾由固定内容的两条记录来表示，字符串形式的”Infimum”代表开头，”Supremum”代表结尾。这两个用来代表开头结尾的Record存储在System Records的段里，这个System Records和User Records是两个平行的段。InnoDB存在4种不同的Record，它们分别是1主键索引树非叶节点 2主键索引树叶子节点 3辅助键索引树非叶节点 4辅助键索引树叶子节点。这4种节点的Record格式有一些差异，但是它们都存储着Next指针指向下一个Record。后续我们会详细介绍这4种节点，现在只需要把Record当成一个存储了数据同时含有Next指针的单链表节点即可。<br><img src="http://ww1.sinaimg.cn/large/65e4f1e6jw1f79tn4e8m0j20b00t0myh.jpg" alt=""><br>&emsp;&emsp;User Record在Page内以单链表的形式存在，最初数据是按照插入的先后顺序排列的，但是随着新数据的插入和旧数据的删除，数据物理顺序会变得混乱，但他们依然保持着逻辑上的先后顺序。<br><img src="http://ww1.sinaimg.cn/large/65e4f1e6jw1f79tnf40w9j20ec0ke0tx.jpg" alt=""><br>&emsp;&emsp;把User Record的组织形式和若干Page组合起来，就看到了稍微完整的形式。<br><img src="http://ww3.sinaimg.cn/large/65e4f1e6jw1f79toichn4j20vu08idgy.jpg" alt=""><br>&emsp;&emsp;现在看下如何定位一个Record：</p>
+<p>　　1 通过根节点开始遍历一个索引的B+树，通过各层非叶子节点最终到达一个Page，这个Page里存放的都是叶子节点。</p>
+<p>　　2 在Page内从”Infimum”节点开始遍历单链表（这种遍历往往会被优化），如果找到该键则成功返回。如果记录到达了”supremum”，说明当前Page里没有合适的键，这时要借助Page的Next Page指针，跳转到下一个Page继续从”Infimum”开始逐个查找。<br><img src="http://ww1.sinaimg.cn/large/65e4f1e6jw1f79tqmo0acj20uq08675f.jpg" alt=""><br>详细看下不同类型的Record里到底存储了什么数据，根据B+树节点的不同，User Record可以被分成四种格式，下图种按照颜色予以区分。</p>
+<p><strong>　　(1) 主索引树非叶节点（绿色）</strong></p>
+<p>　　1 子节点存储的主键里最小的值（Min Cluster Key on Child），这是B+树必须的，作用是在一个Page里定位到具体的记录的位置。</p>
+<p>　　2 最小的值所在的Page的编号（Child Page Number），作用是定位Record。</p>
+<p>　　<strong>(2) 主索引树叶子节点（黄色）</strong></p>
+<p>　　1 主键（Cluster Key Fields），B+树必须的，也是数据行的一部分</p>
+<p>　　2 除去主键以外的所有列（Non-Key Fields），这是数据行的除去主键的其他所有列的集合。</p>
+<p>　　这里的1和2两部分加起来就是一个完整的数据行。</p>
+<p>　　<strong>(3) 辅助索引树非叶节点非（蓝色）</strong></p>
+<p>　　1 子节点里存储的辅助键值里的最小的值（Min Secondary-Key on Child），这是B+树必须的，作用是在一个Page里定位到具体的记录的位置。</p>
+<p>　　2 主键值（Cluster Key Fields），非叶子节点为什么要存储主键呢？因为辅助索引是可以不唯一的，但是B+树要求键的值必须唯一，所以这里把辅助键的值和主键的值合并起来作为在B+树中的真正键值，保证了唯一性。但是这也导致在辅助索引B+树中非叶节点反而比叶子节点多了4个字节。（即下图中蓝色节点反而比红色多了4字节）</p>
+<p>　　3 最小的值所在的Page的编号（Child Page Number），作用是定位Record。<br> <img src="http://ww4.sinaimg.cn/large/65e4f1e6jw1f79trp5yyoj210g0qowik.jpg" alt=""><br> 下面是本篇最重要的部分了，结合B+树的结构和前面介绍的4种Record的内容，我们终于可以画出一幅全景图。由于辅助索引的B+树与主键索引有相似的结构，这里只画出了键索引树的结构图，只包含了”主键非叶节点”和”主键叶子节点”两种节点，也就是上图的的绿色和黄色的部分。图中为一个非页节点和两个叶子节点，B+树几点和Page页不是一一对应，一个节点可能由多个page页组成。<br> <img src="http://ww4.sinaimg.cn/large/65e4f1e6jw1f79twhd0dzj210q0qugqf.jpg" alt=""><br> mysql删除为啥创建临时表？</p>
+<p>　　4 辅助索引树叶子节点（红色）</p>
+<p>　　1 辅助索引键值（Secondary Key Fields），这是B+树必须的。</p>
+<p>　　2 主键值（Cluster Key Fields），用来在主索引树里再做一次B+树检索来找到整条记录。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/mysql/" rel="tag">#mysql</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/08/05/解读Git/" rel="next" title="Git命令">
+                <i class="fa fa-chevron-left"></i> Git命令
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://ww2.sinaimg.cn/large/006tKfTcjw1f6hnikr7zhj30w60watis.jpg"
+               alt="焦明亮" />
+          <p class="site-author-name" itemprop="name">焦明亮</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-name">Artikel</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">Tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#B-树索引"><span class="nav-number">2.</span> <span class="nav-text">B+树索引</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#聚簇索引"><span class="nav-number">2.1.</span> <span class="nav-text">聚簇索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#非聚簇索引"><span class="nav-number">2.2.</span> <span class="nav-text">非聚簇索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Page结构"><span class="nav-number">2.3.</span> <span class="nav-text">Page结构</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">焦明亮</span>
+</div>
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

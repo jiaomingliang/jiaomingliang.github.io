@@ -90,7 +90,7 @@
 <meta property="og:url" content="http://yoursite.com/2016/08/03/Linus命令/index.html">
 <meta property="og:site_name" content="JiaoMingLiang‘s Blog">
 <meta property="og:description" content="概述 本片博客记录了常用的linux命令。">
-<meta property="og:updated_time" content="2016-08-05T02:49:33.000Z">
+<meta property="og:updated_time" content="2016-08-30T07:09:42.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linus命令">
 <meta name="twitter:description" content="概述 本片博客记录了常用的linux命令。">
@@ -174,7 +174,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -184,7 +184,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -247,7 +247,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-08-03T23:23:41+08:00" content="2016-08-03">
               2016-08-03
             </time>
@@ -296,7 +296,7 @@
 <p>实例：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cp blog.war /user/<span class="built_in">local</span></div></pre></td></tr></table></figure></p>
 <p>参数说明：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="_">-a</span>：此选项通常在复制目录时使用，它保留链接、文件属性，并复制目录下的所有内容。其作用等于dpR参数组合。</div><div class="line"><span class="_">-d</span>：复制时保留链接。这里所说的链接相当于Windows系统中的快捷方式。</div><div class="line"><span class="_">-f</span>：覆盖已经存在的目标文件而不给出提示。</div><div class="line">-i：与<span class="_">-f</span>选项相反，在覆盖目标文件之前给出提示，要求用户确认是否覆盖，回答<span class="string">"y"</span>时目标文件将被覆盖。</div><div class="line">-p：除复制文件的内容外，还把修改时间和访问权限也复制到新文件中。</div><div class="line">-r：若给出的源文件是一个目录文件，此时将复制该目录下所有的子目录和文件。</div><div class="line"><span class="_">-l</span>：不复制文件，只是生成链接文件。</div></pre></td></tr></table></figure></p>
 <h2 id="scp"><a href="#scp" class="headerlink" title="scp"></a>scp</h2><p>此命令主要用于向远程主机拷贝，比如：云服务器<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scp [可选参数] file_<span class="built_in">source</span> file_target</div></pre></td></tr></table></figure></p>
-<p>实例：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scp blog.war root@168.23.3.1:~ <span class="comment">#将blog.war拷贝到目的主机的主目录</span></div></pre></td></tr></table></figure></p>
+<p>如果需要复制到本地机器，需要打开本机的远程登录功能。<br>实例：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scp blog.war root@168.23.3.1:~ <span class="comment">#将blog.war拷贝到目的主机的主目录</span></div></pre></td></tr></table></figure></p>
 <p>参数说明：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">-1： 强制scp命令使用协议ssh1</div><div class="line">-2： 强制scp命令使用协议ssh2</div><div class="line">-4： 强制scp命令只使用IPv4寻址</div><div class="line">-6： 强制scp命令只使用IPv6寻址</div><div class="line">-B： 使用批处理模式（传输过程中不询问传输口令或短语）</div><div class="line">-C： 允许压缩。（将-C标志传递给ssh，从而打开压缩功能）</div><div class="line">-p：保留原文件的修改时间，访问时间和访问权限。</div><div class="line">-q： 不显示传输进度条。</div><div class="line">-r： 递归复制整个目录。</div><div class="line">-v：详细方式显示输出。scp和ssh(1)会显示出整个过程的调试信息。这些信息用于调试连接，验证和配置问题。</div><div class="line">-c cipher： 以cipher将数据传输进行加密，这个选项将直接传递给ssh。</div><div class="line">-F ssh_config： 指定一个替代的ssh配置文件，此参数直接传递给ssh。</div><div class="line">-i identity_file： 从指定文件中读取传输时使用的密钥文件，此参数直接传递给ssh。</div><div class="line"><span class="_">-l</span> <span class="built_in">limit</span>： 限定用户所能使用的带宽，以Kbit/s为单位。</div><div class="line">-o ssh_option： 如果习惯于使用ssh_config(5)中的参数传递方式，</div><div class="line">-P port：注意是大写的P, port是指定数据传输用到的端口号</div><div class="line">-S program： 指定加密传输时所使用的程序。此程序必须能够理解ssh(1)的选项。</div></pre></td></tr></table></figure></p>
 <h2 id="pwd"><a href="#pwd" class="headerlink" title="pwd"></a>pwd</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">pwd</span> [--help][--version] <span class="comment">#显示当前位置的目录</span></div></pre></td></tr></table></figure>
 <p>参数说明:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">--help 在线帮助。</div><div class="line">--version 显示版本信息。</div></pre></td></tr></table></figure></p>
@@ -420,10 +420,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Inhaltsverzeichnis
+            Table of Contents
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Übersicht
+            Overview
           </li>
         </ul>
       
@@ -440,7 +440,7 @@
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">4</span>
-              <span class="site-state-item-name">Artikel</span>
+              <span class="site-state-item-name">posts</span>
             </a>
           </div>
 
@@ -450,7 +450,7 @@
             <div class="site-state-item site-state-tags">
               <a href="/tags">
                 <span class="site-state-item-count">3</span>
-                <span class="site-state-item-name">Tags</span>
+                <span class="site-state-item-name">tags</span>
               </a>
             </div>
           
@@ -505,7 +505,7 @@
 </div>
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">

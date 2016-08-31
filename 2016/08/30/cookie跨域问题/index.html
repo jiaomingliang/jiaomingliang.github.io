@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="web," />
 
 
 
@@ -84,13 +84,16 @@
 
 
 
+<meta name="description" content="讲述cookie的跨域问题。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="cookie跨域问题">
 <meta property="og:url" content="http://yoursite.com/2016/08/30/cookie跨域问题/index.html">
 <meta property="og:site_name" content="JiaoMingLiang‘s Blog">
-<meta property="og:updated_time" content="2016-08-30T12:56:02.000Z">
+<meta property="og:description" content="讲述cookie的跨域问题。">
+<meta property="og:updated_time" content="2016-08-31T09:32:53.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="cookie跨域问题">
+<meta name="twitter:description" content="讲述cookie的跨域问题。">
 
 
 
@@ -273,7 +276,13 @@
       
 
       
-        
+        <p>讲述cookie的跨域问题。<br><a id="more"></a></p>
+<h2 id="问题背景"><a href="#问题背景" class="headerlink" title="问题背景"></a>问题背景</h2><p>&emsp;&emsp;最近在使用sso单点登录时，遇到了一些cookie跨域访问的问题，这里只说明在java response.redir()环境下的问题，并不对js ajax的跨域访问作介绍。</p>
+<h2 id="什么是cookie跨域？"><a href="#什么是cookie跨域？" class="headerlink" title="什么是cookie跨域？"></a>什么是cookie跨域？</h2><p>&emsp;&emsp;cookie有两个很重要的属性:==domain==和==path==。<br>&emsp;&emsp;domain告诉浏览器当前要添加的cookie的域名归属，如果没有明确指明则默认为当前域名，比如通过访问www.vinceruan.info添加的cookie的域名默认就是www.vinceruan.info,通过访问blog.vinceruan.info所生成的cookie的域名就是blog.vinceruan.info.<br>&emsp;&emsp;path告诉浏览器当前要添加的cookie的路径归属，如果没有明确指明则默认为当前路径，比如通过访问www.vinceruan.info/java/hotspot.html添加的cookie的默认路径就是/java/,通过blog.vinceruan.info/java/hotspot.html生成的cookie的路径也是/java/.</p>
+<p>&emsp;&emsp;在清楚domain和path的生成规则后，==我们需要知道浏览器在什么时候提交什么cookie到服务器（或者提交到重定向的url服务器）==，即浏览器是通过怎样的规则筛选cookie并提交到服务器的?<br>浏览器提交的cookie需要满足以下两点：<br>1.当前域名或者父域名下的cookie<br>而且<br>2.当前路径或父路径下的cookie<br>要满足以上两个条件的cookie才会被提交.举个例子：有4个cookie:<br>&emsp;&emsp;cookie1:[name=value, domain=.vinceruan.info path=/]<br>&emsp;&emsp;cookie2:[name=value, domain=blog.vinceruan.info path=/java/]<br>&emsp;&emsp;cookie3:[name=value, domain=www.vinceruan.info path=/]<br>&emsp;&emsp;cookie4:[name=value, domain=blog.vinceruan.info path=/]<br>当我访问blog.vinceruan.info时,<br>cookie1可以被提交，因为.vinceruan.info是blog.vinceruan.info的父域名. path路径也一致.<br>cookie2不能被提交，因为虽然domain是保持一致的，但是path不一致，当前访问的是/， 但是cookie2的path是/java/<br>cookie3不能被提交，因为虽然path是一致的，但是www.vinceruan.info不是blog.vinceruan.info的父域名.<br>cookie4可以被提交，因为domain和cookie都严格保持一致.</p>
+<p>&emsp;&emsp;这里需要注意的是, 在浏览器看来.www.vinceruan.info不是blog.vinceruan.info的父域名，而vinceruan.info才是blog.vinceruan.info的父域名，www.vinceruan.info也算是一个二级域名（这点如果你提交过域名到DNS服务器商的应该会知道，一般我们需要显式提交www.vinceruan.info和vinceruan.info, 否则www.vinceruan.info==vinceruan.info是不成立的）.<br>所以如果我们需要在所有二级域名下共享islogin=1的cookie，用java代码如下：<br>Cookie c = new Cookie(“islogin”,”1”);<br>c.setDomain(“.vinceruan.info”);//注意是以点号开头的.<br>c.setPath=(“/“);<br>response.addCookie(c);<br>如果要在所有的二级域名下的/java/路径下共享silogin=1的cookie,用java代码如下:<br>Cookie c = new Cookie(“islogin”,”1”);<br>c.setDomain(“.vinceruan.info”);//注意是以点号开头的.<br>c.setPath=(“/java/“);<br>response.addCookie(c);</p>
+<h2 id="cookie跨域时的解决方案（java）"><a href="#cookie跨域时的解决方案（java）" class="headerlink" title="cookie跨域时的解决方案（java）"></a>cookie跨域时的解决方案（java）</h2><p> 1.使用ngnix做域名路由，使重定向的域名变为当前域名下的不同路径<br> 2.将cookie中的登陆token以参数的形式传给重定向url。</p>
+
       
     </div>
 
@@ -292,6 +301,12 @@
     </div>
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/web/" rel="tag">#web</a>
+          
+        </div>
       
 
       
@@ -382,7 +397,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">Tags</span>
               </a>
             </div>
@@ -411,7 +426,7 @@
               
             
             
-              <p class="post-toc-empty">Dieser Artikel hat kein Inhaltsverzeichnis</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#问题背景"><span class="nav-number">1.</span> <span class="nav-text">问题背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是cookie跨域？"><span class="nav-number">2.</span> <span class="nav-text">什么是cookie跨域？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cookie跨域时的解决方案（java）"><span class="nav-number">3.</span> <span class="nav-text">cookie跨域时的解决方案（java）</span></a></li></ol></div>
             
           </div>
         </section>

@@ -100,7 +100,7 @@
 <meta property="og:image" content="http://ww4.sinaimg.cn/large/006tKfTcjw1f6ipkv2jbpj311i0mqdi4.jpg">
 <meta property="og:image" content="http://ww3.sinaimg.cn/large/006tKfTcjw1f6ipl0dnr8j30wo0ekdgz.jpg">
 <meta property="og:image" content="http://ww2.sinaimg.cn/large/006tKfTcjw1f6ipofhbpuj30u30kln41.jpg">
-<meta property="og:updated_time" content="2016-08-16T11:56:02.000Z">
+<meta property="og:updated_time" content="2016-09-13T03:11:13.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git命令">
 <meta name="twitter:description" content="本文讲述了git一些常用的命令原理。参考《pro git》">
@@ -185,7 +185,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -195,7 +195,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -258,7 +258,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-08-05T10:50:34+08:00" content="2016-08-05">
               2016-08-05
             </time>
@@ -295,8 +295,10 @@
 <p>然后：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">git commit -m <span class="string">'注释'</span></div><div class="line">```  </div><div class="line">就可以提交到本地仓库,此时即是以提交状态。</div><div class="line">如果你想查询文件在git中的状态可以使用： </div><div class="line">```bash </div><div class="line">git status</div><div class="line">On branch master</div><div class="line">Initial commit</div><div class="line">Untracked files:</div><div class="line">  (use <span class="string">"git add &lt;file&gt;..."</span> to include <span class="keyword">in</span> what will be committed)</div><div class="line">    .idea/</div><div class="line">    pom.xml</div><div class="line">    test.iml</div><div class="line">nothing added to commit but untracked files present (use <span class="string">"git add"</span> to track)</div><div class="line">```  </div><div class="line">&amp;emsp;&amp;emsp;可以看到，使用 git status之后出现的提示部分， initial commit 和 untracked files就说明此本地仓库已经初始化并提交，而且未跟踪，如果你想要跟踪这些文件可以使用 git add 命令，这些也都在提示中，这可以看出git的人性化了吧。</div><div class="line">为了跟好的理解git中文件状态的周期变化，给出下图：</div><div class="line">![](http://ww3.sinaimg.cn/large/006tKfTcjw1f6ioxx5051j310o0gotae.jpg)</div><div class="line"><span class="comment">### 从现有仓库克隆 </span></div><div class="line">&amp;emsp;&amp;emsp;当你想从别人或者自己的仓库中复制整个项目时，使用：</div><div class="line">git <span class="built_in">clone</span> git://github.com/<span class="built_in">test</span>/test.git</div><div class="line">这里使用的服务器是github的服务器，当然你也可以改成自己公司的git服务器。</div><div class="line"><span class="comment">### 忽略某些文件 </span></div><div class="line">&amp;emsp;&amp;emsp;当你不想将一些没用的文件加入项目管理，可以创建一个.gitignore的文件，此文件中可以写出忽略文件的格式，这里遵从glob格式，也就是正则表达式。</div><div class="line"> *.[oa] //表示以.o或者 .a结尾的都会被忽略</div><div class="line"> *~//表示以～结尾的都会被忽略</div><div class="line"><span class="comment">### 移除文件 </span></div><div class="line">从暂存区移除文件可以使用：</div><div class="line">```bash</div><div class="line">git rm test.txt</div></pre></td></tr></table></figure></p>
 <p>最后提交的话就不会纳入此版本管理了。</p>
 <h3 id="移动文件"><a href="#移动文件" class="headerlink" title="移动文件"></a>移动文件</h3><p>这个功能与其说是移动不如说是改名：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">git mv file_from file_to</div><div class="line">git mv readme.txt readme <span class="comment">#等价于下面三条命令</span></div><div class="line">mv readme.txt readme <span class="comment">#移动数据</span></div><div class="line">git rm readme.txt <span class="comment">#删除原来的文件</span></div><div class="line">git add readme <span class="comment">#将改名后的文件移动到暂存区</span></div></pre></td></tr></table></figure></p>
-<h3 id="取消更改"><a href="#取消更改" class="headerlink" title="取消更改"></a>取消更改</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git reset HEAD BEN.rb //取消已经暂存的文件</div><div class="line">git checkout --ben.rb //取消已经更新但是未暂存的文件</div></pre></td></tr></table></figure>
-<p>###修改commit信息<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git commit --amend</div></pre></td></tr></table></figure></p>
+<h3 id="取消更改"><a href="#取消更改" class="headerlink" title="取消更改"></a>取消更改</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git reset HEAD filename //取消已经暂存的文件,取消跟踪但是不会删除更改，只是commit不会提交此文件了</div><div class="line">git checkout --filename //取消已经更新但是未暂存的文件,将未暂存的修改删除。</div></pre></td></tr></table></figure>
+<h3 id="修改commit信息"><a href="#修改commit信息" class="headerlink" title="修改commit信息"></a>修改commit信息</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git commit --amend</div></pre></td></tr></table></figure>
+<h2 id="版本回退"><a href="#版本回退" class="headerlink" title="版本回退"></a>版本回退</h2><p>当你做的修改已经提交或者未提交时，需要回退到上一个版本<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git reset --hard HEAD^  <span class="comment">#回退到当前版本的上一个版本 </span></div><div class="line">git reset --hard HEAD^  <span class="comment">#回退到当前版本的上上个版本</span></div><div class="line">git reset --hard &lt;提交版本号&gt;  <span class="comment">#回退到此版本号所代表的版本</span></div></pre></td></tr></table></figure></p>
+<p><strong>如果回退之后 又想回到未来  除非你有未来的版本号  git log是打不出未来版本号的</strong></p>
 <h2 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a>远程仓库</h2><p>&emsp;&emsp;远程仓库是指托管 在网络上的项目仓库,可能会有好多个,其中有些你只能读,另外有些可以写。同他人协作 开发某个项目时,需要管理这些远程仓库,以便推送或拉取数据,分享各自的工作进展。管 理远程仓库的工作,包括添加远程库,移除废弃的远程库,管理各式远程库分支,定义是否 跟踪这些分支 。<br> 查看远程仓库<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git remote -v <span class="comment">#查看原称仓库的详细信息</span></div></pre></td></tr></table></figure></p>
 <p>了解了远程仓库后就要添加远程仓库了：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git remote add origin(shortname) git://github.com/paul/test.git</div></pre></td></tr></table></figure></p>
 <p>&emsp;&emsp;这条命令就添加了远程仓库，刚开始学习git的时候，在这里郁闷了很长时间，以为添加了远程仓库就能在服务器上面添加仓库，但是事实并不是这样，其实远程仓库并不是实际服务器上的仓库，而是服务器上的仓库的别名，可以看到 shortname 可以是任意的名字 可以代表后面的一大串url，这对我们以后向远程仓库push很方便，起码不用谢url了，git默认的仓库名字是origin。<br>从远程仓库抓取项目文件可以使用：<br> <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git fetch origin</div></pre></td></tr></table></figure></p>
@@ -321,8 +323,6 @@
 <p>合并时会出现两种情况：<br>1.当master位于hotfix的直接上游时，此时会出现“ fast forword”提示，这是一种简单的合并。<br>如图： 合并前<br><img src="http://ww4.sinaimg.cn/large/006tKfTcjw1f6ipgtzoikj30lm07c74h.jpg" alt=""><br>合并后<br><img src="http://ww2.sinaimg.cn/large/006tKfTcjw1f6iph25cu4j30ic09edg0.jpg" alt=""><br>2.当不是直接上游时：<br><img src="http://ww2.sinaimg.cn/large/006tKfTcjw1f6ipkb2ibfj30no0bwaaf.jpg" alt=""><br>此时git会根据 c4 和c5的公共祖先进行一次三方计算，并创建一个新的commit对象：<br><img src="http://ww4.sinaimg.cn/large/006tKfTcjw1f6ipkv2jbpj311i0mqdi4.jpg" alt=""><br>合并后的分支状态（将计算出的c6作为master的源点）：<br><img src="http://ww3.sinaimg.cn/large/006tKfTcjw1f6ipl0dnr8j30wo0ekdgz.jpg" alt=""></p>
 <h3 id="分支冲突"><a href="#分支冲突" class="headerlink" title="分支冲突"></a>分支冲突</h3><p>&emsp;&emsp;当分支发生冲突时，git并不会过早的合并，而是提醒你发生冲突的文件，可以手动人工的方式协商冲突的文件，已达到最好的效果。</p>
 <h3 id="显示提交记录"><a href="#显示提交记录" class="headerlink" title="显示提交记录"></a>显示提交记录</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git <span class="built_in">log</span>   <span class="comment">#其中出现的版本号在版本回退中很重要</span></div></pre></td></tr></table></figure>
-<h2 id="版本回退"><a href="#版本回退" class="headerlink" title="版本回退"></a>版本回退</h2><p>当你做的修改已经提交或者未提交时，需要回退到上一个版本<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git reset --hard HEAD^  <span class="comment">#回退到当前版本的上一个版本 </span></div><div class="line">git reset --hard HEAD^  <span class="comment">#回退到当前版本的上上个版本</span></div><div class="line">git reset --hard &lt;提交版本号&gt;  <span class="comment">#回退到此版本号所代表的版本</span></div></pre></td></tr></table></figure></p>
-<p><strong>如果回退之后 又想回到未来  除非你有未来的版本号  git log是打不出未来版本号的</strong></p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>&emsp;&emsp;最后用一幅图来将形象化：<br><img src="http://ww2.sinaimg.cn/large/006tKfTcjw1f6ipofhbpuj30u30kln41.jpg" alt=""></p>
 
       
@@ -414,10 +414,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Inhaltsverzeichnis
+            Table of Contents
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Übersicht
+            Overview
           </li>
         </ul>
       
@@ -434,7 +434,7 @@
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">5</span>
-              <span class="site-state-item-name">Artikel</span>
+              <span class="site-state-item-name">posts</span>
             </a>
           </div>
 
@@ -444,7 +444,7 @@
             <div class="site-state-item site-state-tags">
               <a href="/tags">
                 <span class="site-state-item-count">4</span>
-                <span class="site-state-item-name">Tags</span>
+                <span class="site-state-item-name">tags</span>
               </a>
             </div>
           
@@ -472,7 +472,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#初识Git"><span class="nav-number">1.</span> <span class="nav-text">初识Git</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git基础"><span class="nav-number">2.</span> <span class="nav-text">git基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#本地仓库的初始化与提交过程"><span class="nav-number">2.1.</span> <span class="nav-text">本地仓库的初始化与提交过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#移动文件"><span class="nav-number">2.2.</span> <span class="nav-text">移动文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#取消更改"><span class="nav-number">2.3.</span> <span class="nav-text">取消更改</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#远程仓库"><span class="nav-number">3.</span> <span class="nav-text">远程仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git分支"><span class="nav-number">4.</span> <span class="nav-text">git分支</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建分支"><span class="nav-number">4.1.</span> <span class="nav-text">创建分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#切换分支、删除本地分支与分支合并"><span class="nav-number">4.2.</span> <span class="nav-text">切换分支、删除本地分支与分支合并</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分支冲突"><span class="nav-number">4.3.</span> <span class="nav-text">分支冲突</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#显示提交记录"><span class="nav-number">4.4.</span> <span class="nav-text">显示提交记录</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#版本回退"><span class="nav-number">5.</span> <span class="nav-text">版本回退</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">6.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#初识Git"><span class="nav-number">1.</span> <span class="nav-text">初识Git</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git基础"><span class="nav-number">2.</span> <span class="nav-text">git基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#本地仓库的初始化与提交过程"><span class="nav-number">2.1.</span> <span class="nav-text">本地仓库的初始化与提交过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#移动文件"><span class="nav-number">2.2.</span> <span class="nav-text">移动文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#取消更改"><span class="nav-number">2.3.</span> <span class="nav-text">取消更改</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改commit信息"><span class="nav-number">2.4.</span> <span class="nav-text">修改commit信息</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#版本回退"><span class="nav-number">3.</span> <span class="nav-text">版本回退</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#远程仓库"><span class="nav-number">4.</span> <span class="nav-text">远程仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git分支"><span class="nav-number">5.</span> <span class="nav-text">git分支</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建分支"><span class="nav-number">5.1.</span> <span class="nav-text">创建分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#切换分支、删除本地分支与分支合并"><span class="nav-number">5.2.</span> <span class="nav-text">切换分支、删除本地分支与分支合并</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分支冲突"><span class="nav-number">5.3.</span> <span class="nav-text">分支冲突</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#显示提交记录"><span class="nav-number">5.4.</span> <span class="nav-text">显示提交记录</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">6.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
           </div>
         </section>
@@ -499,7 +499,7 @@
 </div>
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">

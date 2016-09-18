@@ -100,7 +100,7 @@
 <meta property="og:image" content="http://ww4.sinaimg.cn/large/006tKfTcjw1f6ipkv2jbpj311i0mqdi4.jpg">
 <meta property="og:image" content="http://ww3.sinaimg.cn/large/006tKfTcjw1f6ipl0dnr8j30wo0ekdgz.jpg">
 <meta property="og:image" content="http://ww2.sinaimg.cn/large/006tKfTcjw1f6ipofhbpuj30u30kln41.jpg">
-<meta property="og:updated_time" content="2016-09-13T03:11:13.000Z">
+<meta property="og:updated_time" content="2016-09-18T09:15:43.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git命令">
 <meta name="twitter:description" content="本文讲述了git一些常用的命令原理。参考《pro git》">
@@ -319,7 +319,7 @@
 <p>如图；修补bug的分支为iss53<br><img src="http://ww2.sinaimg.cn/large/006tKfTcjw1f6ipbkxgksj30u20cu3yx.jpg" alt=""></p>
 <h3 id="创建分支"><a href="#创建分支" class="headerlink" title="创建分支"></a>创建分支</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git branch testing</div></pre></td></tr></table></figure>
 <p>创建分支前：<br><img src="http://ww4.sinaimg.cn/large/006tKfTcjw1f6ipdjtwjkj30qk06kjrm.jpg" alt=""><br>创建分支后：<br><img src="http://ww3.sinaimg.cn/large/006tKfTcjw1f6ipe3r9prj30t60ak3yw.jpg" alt=""><br>每个分支在更新中是独立的。</p>
-<h3 id="切换分支、删除本地分支与分支合并"><a href="#切换分支、删除本地分支与分支合并" class="headerlink" title="切换分支、删除本地分支与分支合并"></a>切换分支、删除本地分支与分支合并</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git checkout testing</div><div class="line">git branch <span class="_">-d</span> testing  <span class="comment">#删除本地分支，在当前分支下不能删除当前本地分支</span></div><div class="line">git merge hotfix <span class="comment">#把master分支合并到hotfix分支</span></div></pre></td></tr></table></figure>
+<h3 id="切换分支、删除本地分支与分支合并"><a href="#切换分支、删除本地分支与分支合并" class="headerlink" title="切换分支、删除本地分支与分支合并"></a>切换分支、删除本地分支与分支合并</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git checkout testing</div><div class="line">git branch <span class="_">-d</span> testing  <span class="comment">#删除本地分支，在当前分支下不能删除当前本地分支</span></div><div class="line">git merge hotfix <span class="comment">#把hotfix分支合并到master分支</span></div></pre></td></tr></table></figure>
 <p>合并时会出现两种情况：<br>1.当master位于hotfix的直接上游时，此时会出现“ fast forword”提示，这是一种简单的合并。<br>如图： 合并前<br><img src="http://ww4.sinaimg.cn/large/006tKfTcjw1f6ipgtzoikj30lm07c74h.jpg" alt=""><br>合并后<br><img src="http://ww2.sinaimg.cn/large/006tKfTcjw1f6iph25cu4j30ic09edg0.jpg" alt=""><br>2.当不是直接上游时：<br><img src="http://ww2.sinaimg.cn/large/006tKfTcjw1f6ipkb2ibfj30no0bwaaf.jpg" alt=""><br>此时git会根据 c4 和c5的公共祖先进行一次三方计算，并创建一个新的commit对象：<br><img src="http://ww4.sinaimg.cn/large/006tKfTcjw1f6ipkv2jbpj311i0mqdi4.jpg" alt=""><br>合并后的分支状态（将计算出的c6作为master的源点）：<br><img src="http://ww3.sinaimg.cn/large/006tKfTcjw1f6ipl0dnr8j30wo0ekdgz.jpg" alt=""></p>
 <h3 id="分支冲突"><a href="#分支冲突" class="headerlink" title="分支冲突"></a>分支冲突</h3><p>&emsp;&emsp;当分支发生冲突时，git并不会过早的合并，而是提醒你发生冲突的文件，可以手动人工的方式协商冲突的文件，已达到最好的效果。</p>
 <h3 id="显示提交记录"><a href="#显示提交记录" class="headerlink" title="显示提交记录"></a>显示提交记录</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git <span class="built_in">log</span>   <span class="comment">#其中出现的版本号在版本回退中很重要</span></div></pre></td></tr></table></figure>

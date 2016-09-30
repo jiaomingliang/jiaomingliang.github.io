@@ -100,7 +100,7 @@
 <meta property="og:image" content="http://ww4.sinaimg.cn/large/006tKfTcjw1f6ipkv2jbpj311i0mqdi4.jpg">
 <meta property="og:image" content="http://ww3.sinaimg.cn/large/006tKfTcjw1f6ipl0dnr8j30wo0ekdgz.jpg">
 <meta property="og:image" content="http://ww2.sinaimg.cn/large/006tKfTcjw1f6ipofhbpuj30u30kln41.jpg">
-<meta property="og:updated_time" content="2016-09-18T09:15:43.000Z">
+<meta property="og:updated_time" content="2016-09-30T05:56:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git命令">
 <meta name="twitter:description" content="本文讲述了git一些常用的命令原理。参考《pro git》">
@@ -185,7 +185,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -195,7 +195,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -258,7 +258,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-08-05T10:50:34+08:00" content="2016-08-05">
               2016-08-05
             </time>
@@ -298,7 +298,7 @@
 <h3 id="取消更改"><a href="#取消更改" class="headerlink" title="取消更改"></a>取消更改</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git reset HEAD filename //取消已经暂存的文件,取消跟踪但是不会删除更改，只是commit不会提交此文件了</div><div class="line">git checkout --filename //取消已经更新但是未暂存的文件,将未暂存的修改删除。</div></pre></td></tr></table></figure>
 <h3 id="修改commit信息"><a href="#修改commit信息" class="headerlink" title="修改commit信息"></a>修改commit信息</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git commit --amend</div></pre></td></tr></table></figure>
 <h2 id="版本回退"><a href="#版本回退" class="headerlink" title="版本回退"></a>版本回退</h2><p>当你做的修改已经提交或者未提交时，需要回退到上一个版本<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git reset --hard HEAD^  <span class="comment">#回退到当前版本的上一个版本 </span></div><div class="line">git reset --hard HEAD^  <span class="comment">#回退到当前版本的上上个版本</span></div><div class="line">git reset --hard &lt;提交版本号&gt;  <span class="comment">#回退到此版本号所代表的版本</span></div></pre></td></tr></table></figure></p>
-<p><strong>如果回退之后 又想回到未来  除非你有未来的版本号  git log是打不出未来版本号的</strong></p>
+<p><strong>如果回退之后 又想回到未来  除非你有未来的版本号  git log是打不出未来版本号的，使用git log -g 或者git reflog就可以显示出来</strong></p>
 <h2 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a>远程仓库</h2><p>&emsp;&emsp;远程仓库是指托管 在网络上的项目仓库,可能会有好多个,其中有些你只能读,另外有些可以写。同他人协作 开发某个项目时,需要管理这些远程仓库,以便推送或拉取数据,分享各自的工作进展。管 理远程仓库的工作,包括添加远程库,移除废弃的远程库,管理各式远程库分支,定义是否 跟踪这些分支 。<br> 查看远程仓库<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git remote -v <span class="comment">#查看原称仓库的详细信息</span></div></pre></td></tr></table></figure></p>
 <p>了解了远程仓库后就要添加远程仓库了：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git remote add origin(shortname) git://github.com/paul/test.git</div></pre></td></tr></table></figure></p>
 <p>&emsp;&emsp;这条命令就添加了远程仓库，刚开始学习git的时候，在这里郁闷了很长时间，以为添加了远程仓库就能在服务器上面添加仓库，但是事实并不是这样，其实远程仓库并不是实际服务器上的仓库，而是服务器上的仓库的别名，可以看到 shortname 可以是任意的名字 可以代表后面的一大串url，这对我们以后向远程仓库push很方便，起码不用谢url了，git默认的仓库名字是origin。<br>从远程仓库抓取项目文件可以使用：<br> <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git fetch origin</div></pre></td></tr></table></figure></p>
@@ -414,10 +414,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Inhaltsverzeichnis
+            Table of Contents
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Übersicht
+            Overview
           </li>
         </ul>
       
@@ -434,7 +434,7 @@
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">5</span>
-              <span class="site-state-item-name">Artikel</span>
+              <span class="site-state-item-name">posts</span>
             </a>
           </div>
 
@@ -444,7 +444,7 @@
             <div class="site-state-item site-state-tags">
               <a href="/tags">
                 <span class="site-state-item-count">4</span>
-                <span class="site-state-item-name">Tags</span>
+                <span class="site-state-item-name">tags</span>
               </a>
             </div>
           
@@ -499,7 +499,7 @@
 </div>
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">

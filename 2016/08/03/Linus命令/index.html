@@ -90,7 +90,7 @@
 <meta property="og:url" content="http://yoursite.com/2016/08/03/Linus命令/index.html">
 <meta property="og:site_name" content="JiaoMingLiang‘s Blog">
 <meta property="og:description" content="概述 本片博客记录了常用的linux命令。">
-<meta property="og:updated_time" content="2016-09-13T03:23:42.000Z">
+<meta property="og:updated_time" content="2016-11-07T12:05:45.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linus命令">
 <meta name="twitter:description" content="概述 本片博客记录了常用的linux命令。">
@@ -174,7 +174,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Accueil
           </a>
         </li>
       
@@ -184,7 +184,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -247,7 +247,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posté le</span>
             <time itemprop="dateCreated" datetime="2016-08-03T23:23:41+08:00" content="2016-08-03">
               2016-08-03
             </time>
@@ -334,6 +334,7 @@
 <h2 id="mkdir"><a href="#mkdir" class="headerlink" title="mkdir"></a>mkdir</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#递归创建子文件</span></div><div class="line">mkdir -p /data/<span class="built_in">log</span></div></pre></td></tr></table></figure>
 <h2 id="grep"><a href="#grep" class="headerlink" title="grep"></a>grep</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#查找文件中 字符串内容</span></div><div class="line">grep ‘<span class="built_in">test</span>（要查询的内容）’ 文件名</div></pre></td></tr></table></figure>
 <h2 id="telnet"><a href="#telnet" class="headerlink" title="telnet"></a>telnet</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#测试网络连通性</span></div><div class="line">telnet IP/域名</div></pre></td></tr></table></figure>
+<h2 id="ln"><a href="#ln" class="headerlink" title="ln"></a>ln</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#建立java到java_1.8的软连接</span></div><div class="line">ln <span class="_">-s</span> java_1.8 java</div></pre></td></tr></table></figure>
 <p>以后在学到相关命令会继续更新。。。</p>
 
       
@@ -425,10 +426,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Inhaltsverzeichnis
+            Table Des Matières
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Übersicht
+            Ensemble
           </li>
         </ul>
       
@@ -445,7 +446,7 @@
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">5</span>
-              <span class="site-state-item-name">Artikel</span>
+              <span class="site-state-item-name">articles</span>
             </a>
           </div>
 
@@ -455,7 +456,7 @@
             <div class="site-state-item site-state-tags">
               <a href="/tags">
                 <span class="site-state-item-count">4</span>
-                <span class="site-state-item-name">Tags</span>
+                <span class="site-state-item-name">tags</span>
               </a>
             </div>
           
@@ -483,7 +484,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#man-commond"><span class="nav-number">2.</span> <span class="nav-text">man commond</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cd"><span class="nav-number">3.</span> <span class="nav-text">cd</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ls"><span class="nav-number">4.</span> <span class="nav-text">ls</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mv"><span class="nav-number">5.</span> <span class="nav-text">mv</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#rm"><span class="nav-number">6.</span> <span class="nav-text">rm</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mdir"><span class="nav-number">7.</span> <span class="nav-text">mdir</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cat"><span class="nav-number">8.</span> <span class="nav-text">cat</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cp"><span class="nav-number">9.</span> <span class="nav-text">cp</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#scp"><span class="nav-number">10.</span> <span class="nav-text">scp</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pwd"><span class="nav-number">11.</span> <span class="nav-text">pwd</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tar"><span class="nav-number">12.</span> <span class="nav-text">tar</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ps"><span class="nav-number">13.</span> <span class="nav-text">ps</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#kill"><span class="nav-number">14.</span> <span class="nav-text">kill</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看端口"><span class="nav-number">15.</span> <span class="nav-text">查看端口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看线程id"><span class="nav-number">16.</span> <span class="nav-text">查看线程id</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#终端登陆mysql数据库"><span class="nav-number">17.</span> <span class="nav-text">终端登陆mysql数据库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mysql导出数据"><span class="nav-number">18.</span> <span class="nav-text">mysql导出数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#linux文件权限"><span class="nav-number">19.</span> <span class="nav-text">linux文件权限</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mkdir"><span class="nav-number">20.</span> <span class="nav-text">mkdir</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#grep"><span class="nav-number">21.</span> <span class="nav-text">grep</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#telnet"><span class="nav-number">22.</span> <span class="nav-text">telnet</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#man-commond"><span class="nav-number">2.</span> <span class="nav-text">man commond</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cd"><span class="nav-number">3.</span> <span class="nav-text">cd</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ls"><span class="nav-number">4.</span> <span class="nav-text">ls</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mv"><span class="nav-number">5.</span> <span class="nav-text">mv</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#rm"><span class="nav-number">6.</span> <span class="nav-text">rm</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mdir"><span class="nav-number">7.</span> <span class="nav-text">mdir</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cat"><span class="nav-number">8.</span> <span class="nav-text">cat</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cp"><span class="nav-number">9.</span> <span class="nav-text">cp</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#scp"><span class="nav-number">10.</span> <span class="nav-text">scp</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pwd"><span class="nav-number">11.</span> <span class="nav-text">pwd</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tar"><span class="nav-number">12.</span> <span class="nav-text">tar</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ps"><span class="nav-number">13.</span> <span class="nav-text">ps</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#kill"><span class="nav-number">14.</span> <span class="nav-text">kill</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看端口"><span class="nav-number">15.</span> <span class="nav-text">查看端口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看线程id"><span class="nav-number">16.</span> <span class="nav-text">查看线程id</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#终端登陆mysql数据库"><span class="nav-number">17.</span> <span class="nav-text">终端登陆mysql数据库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mysql导出数据"><span class="nav-number">18.</span> <span class="nav-text">mysql导出数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#linux文件权限"><span class="nav-number">19.</span> <span class="nav-text">linux文件权限</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mkdir"><span class="nav-number">20.</span> <span class="nav-text">mkdir</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#grep"><span class="nav-number">21.</span> <span class="nav-text">grep</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#telnet"><span class="nav-number">22.</span> <span class="nav-text">telnet</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ln"><span class="nav-number">23.</span> <span class="nav-text">ln</span></a></li></ol></div>
             
           </div>
         </section>
@@ -510,11 +511,11 @@
 </div>
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
-  Theme -
+  Thème -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
     NexT.Muse
   </a>
